@@ -140,7 +140,20 @@ Enter your age: 29
 Your age in months is 384.
 ```
 ### **ans:**
+```
+#include <iostream>
 
+int main()
+{
+	using namespace std;
+	int age = 0;
+	cout << "Enter your age: ";
+	cin >> age;
+	cout << "Your age in months is " << age * 12 << ".\n";
+	return 0;
+}
+
+```
 ### 5. Write a program that has `main()` call a user-defined function that takes a Celsius temperature value as an argument and then returns the equivalent Fahrenheit value. The program should request the Celsius value as input from the user and display the result, as shown in the following code:
 ```
 Please enter a Celsius value: 20
