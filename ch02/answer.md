@@ -162,7 +162,28 @@ For reference, here is the formula for making the conversion:
 Fahrenheit = 1.8 × degrees Celsius + 32.0
 ```
 ### **ans:**
+```
+#include <iostream>
 
+double cels2fahr(double cels);
+
+int main()
+{
+	using namespace std;
+	double cels = 0.0;
+	cout << "Please enter a Celsius value: ";
+	cin >> cels;
+	cout << cels << " degrees Celsius is " << cels2fahr(cels) << " degrees Fahrenheit." << endl;
+
+	return 0;
+}
+
+double cels2fahr(double cels)
+{
+	return cels*1.8 + 32.0;
+}
+
+```
 ### 6. Write a program that has `main()` call a user-defined function that takes a distance in light years as an argument and then returns the distance in astronomical units. The program should request the light year value as input from the user and display the result, as shown in the following code:
 ```
 Enter the number of light years: 4.2
