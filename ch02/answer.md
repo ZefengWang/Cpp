@@ -104,7 +104,7 @@ Three blind mice
 See how they run
 See how they run
 ```
-#### One function, called two times, should produce the first two lines, and the remaining function, also called twice, should produce the remaining output.
+### One function, called two times, should produce the first two lines, and the remaining function, also called twice, should produce the remaining output.
 ### **ans:**
 ```
 #include <iostream>
@@ -159,8 +159,8 @@ int main()
 Please enter a Celsius value: 20
 20 degrees Celsius is 68 degrees Fahrenheit.
 ```
-#### For reference, here is the formula for making the conversion:
-#### Fahrenheit = 1.8 × degrees Celsius + 32.0
+### For reference, here is the formula for making the conversion:
+### Fahrenheit = 1.8 × degrees Celsius + 32.0
 
 ### **ans:**
 ```
@@ -194,6 +194,25 @@ Enter the number of light years: 4.2
 ### 1 light year = 63,240 astronomical units
 ### **ans:**
 ```
+#include <iostream>
+
+double ly2astron(double cels);
+
+int main()
+{
+	using namespace std;
+	double light_year = 0.0;
+	cout << "Enter the number of light years: ";
+	cin >> light_year;
+	cout << light_year << " light years = " << ly2astron(light_year) << " astronomical units." << endl;
+
+	return 0;
+}
+
+double ly2astron(double ly)
+{
+	return ly*63240.0;
+}
 
 ```
 ### 7. Write a program that asks the user to enter an hour value and a minute value.The `main()` function should then pass these two values to a type `void` function that displays the two values in the format shown in the following sample run:
