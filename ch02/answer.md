@@ -104,7 +104,7 @@ Three blind mice
 See how they run
 See how they run
 ```
-### One function, called two times, should produce the first two lines, and the remaining function, also called twice, should produce the remaining output.
+#### One function, called two times, should produce the first two lines, and the remaining function, also called twice, should produce the remaining output.
 ### **ans:**
 ```
 #include <iostream>
@@ -158,9 +158,10 @@ int main()
 ```
 Please enter a Celsius value: 20
 20 degrees Celsius is 68 degrees Fahrenheit.
-For reference, here is the formula for making the conversion:
-Fahrenheit = 1.8 × degrees Celsius + 32.0
 ```
+#### For reference, here is the formula for making the conversion:
+#### Fahrenheit = 1.8 × degrees Celsius + 32.0
+
 ### **ans:**
 ```
 #include <iostream>
