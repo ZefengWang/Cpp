@@ -2,22 +2,43 @@
 ## **Chapter Review**
 ### 1. Why does C++ have more than one integer type?
 
+for different situation and chosing the right type to use
+
 ### 2. Declare variables matching the following descriptions:
 ```
 a. A short integer with the value 80
 b. An unsigned int integer with the value 42,110
 c. An integer with the value 3,000,000,000
 ```
+```
+short int v1 = 80;
+unnsigned int v2 =  42110;
+int v3 = 3000000000;
+```
 ### 3. What safeguards does C++ provide to keep you from exceeding the limits of an integer type?
+## unknown
 ### 4. What is the distinction between 33L and 33?
+33L is storage in the long variable, 33 is int
 ### 5. Consider the two C++ statements that follow:
 ```
 char grade = 65;
 char grade = 'A';
 ```
 ### Are they equivalent?
+yes if we consider it in computer's eyesight
 ### 6. How could you use C++ to find out which character the code 88 represents? Come up with at least two ways.
+```
+cout << char(88) << endl;
+```
+```
+cout << (char)88 << endl;
+```
+```
+char a = 88;
+cout << a << endl;
+```
 ### 7. Assigning a long value to a float can result in a rounding error.What about assigning long to double? long long to double?
+## unknown
 ### 8. Evaluate the following expressions as C++ would:
 ```
 a. 8 * 9 + 2
@@ -26,7 +47,20 @@ c. 3 / 4 * 6
 d. 6.0 * 3 / 4
 e. 15 % 4
 ```
+```
+a. 74
+b. 6*3 -> 18 ; 18/4 -> 4;  res  --> 4
+c. 0
+d. 4.5
+e. 3
+```
 ### 9. Suppose x1 and x2 are two type double variables that you want to add as integers and assign to an integer variable. Construct a C++ statement for doing so.What if you want to add them as type double and then convert to int?
+```
+int c = int(x1) + int(x2);
+```
+```
+int c = int (x1 + x2);
+```
 ### 10. What is the variable type for each of the following declarations?
 ```
 a. auto cars = 15;
@@ -34,6 +68,13 @@ b. auto iou = 150.37f;
 c. auto level = 'B';
 d. auto crat = U'/U00002155';
 e. auto fract = 8.25f/2.5;
+```
+```
+a. int
+b. float
+c. char
+d. w_chat
+e. double
 ```
 ## Programming Exercises
 ### 1. Write a short program that asks for your height in integer inches and then converts your height to feet and inches. Have the program use the underscore character to indicate where to type the response. Also use a const symbolic constant to represent the conversion factor.
