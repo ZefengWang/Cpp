@@ -26,6 +26,8 @@ char grade = 'A';
 ```
 ### Are they equivalent?
 yes if we consider it in computer's eyesight
+
+not very the same, 65 is storaged as a int but 'A' is a char
 ### 6. How could you use C++ to find out which character the code 88 represents? Come up with at least two ways.
 ```
 cout << char(88) << endl;
@@ -78,6 +80,9 @@ e. double
 ```
 ## Programming Exercises
 ### 1. Write a short program that asks for your height in integer inches and then converts your height to feet and inches. Have the program use the underscore character to indicate where to type the response. Also use a const symbolic constant to represent the conversion factor.
+```
+```
+
 ### 2. Write a short program that asks for your height in feet and inches and your weight in pounds. (Use three variables to store the information.) Have the program report your body mass index (BMI).To calculate the BMI, first convert your height in feet and inches to your height in inches (1 foot = 12 inches).Then convert your height in inches to your height in meters by multiplying by 0.0254.Then convert your weight in pounds into your mass in kilograms by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms by the square of your height in meters. Use symbolic constants to represent the various conversion factors.
 ### 3. Write a program that asks the user to enter a latitude in degrees, minutes, and seconds and that then displays the latitude in decimal format.There are 60 seconds of arc to a minute and 60 minutes of arc to a degree; represent these values with symbolic constants.You should use a separate variable for each input value.A sample run should look like this:
 ```
