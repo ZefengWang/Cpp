@@ -81,6 +81,19 @@ e. double
 ## Programming Exercises
 ### 1. Write a short program that asks for your height in integer inches and then converts your height to feet and inches. Have the program use the underscore character to indicate where to type the response. Also use a const symbolic constant to represent the conversion factor.
 ```
+#include <iostream>
+
+int main()
+{
+	const double factor = 1.0/12;
+	using namespace std;
+	int height;
+	cout << "Please input your height in inch: ___" << "\b\b\b";
+	cin >> height;
+	cout << "Your height in feet is " << height * factor << "." << endl;
+
+	return 0;
+}
 ```
 
 ### 2. Write a short program that asks for your height in feet and inches and your weight in pounds. (Use three variables to store the information.) Have the program report your body mass index (BMI).To calculate the BMI, first convert your height in feet and inches to your height in inches (1 foot = 12 inches).Then convert your height in inches to your height in meters by multiplying by 0.0254.Then convert your weight in pounds into your mass in kilograms by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms by the square of your height in meters. Use symbolic constants to represent the various conversion factors.
