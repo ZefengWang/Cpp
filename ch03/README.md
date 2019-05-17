@@ -107,12 +107,33 @@ int main()
 ```
 #include <iostream>
 
-#define 
+#define FOOT2INCH		12
+#define INCH2METER		0.0254
+#define POUND2KG		(1.0/2.2)
 
 int main(int argc, char ** argv)
 {
+        using namespace std;
+        double h_f = 0, h_i = 0;
+        double h_m = 0.0, w_p = 0.0, w_kg = 0.0, BMI = 0.0;
+        cout << "Please input you height in foot part: ___\b\b";
+        cin >> h_f;
+        cout << "Please input you height in inch part: ___\b\b";
+        cin >> h_i;
+        cout << "Please input you weight in pound: _____\b\b\b\b";
+        cin >> w_p;
 
+        h_i += h_f * FOOT2INCH;
+        h_m = h_i * INCH2METER;
+        w_kg = w_p * POUND2KG;
+
+        BMI = w_kg / (h_m * h_m);
+        cout << "\e[1;32mHere is your Result:\e[0m\n\tYour Height is: " <<  h_m \
+                << "meters. \n\tYour weight is: " << w_kg << "kg." \
+                << "\n\tYour BMI index is: " << BMI << endl;
+        return 0;
 }
+
 ```
 ### 3. Write a program that asks the user to enter a latitude in degrees, minutes, and seconds and that then displays the latitude in decimal format.There are 60 seconds of arc to a minute and 60 minutes of arc to a degree; represent these values with symbolic constants.You should use a separate variable for each input value.A sample run should look like this:
 ```
@@ -122,10 +143,63 @@ Next, enter the minutes of arc: 51
 Finally, enter the seconds of arc: 19
 37 degrees, 51 minutes, 19 seconds = 37.8553 degrees
 ```
+```
+#include <iostream>
+
+#define SECOND2MINUTE (1.0/60.0)
+#define MINUTE2DEGREE (1.0/60.0)
+
+int main()
+{
+        using namespace std;
+        int degree = 0, minute = 0, second = 0;
+        double latitude = 0.0;
+        cout << "Enter a latitude in degrees, minutes, and seconds:" << endl  \
+                << "First, enter the degrees: ";
+        cin >> degree;
+        cout << "Next, enter the minutes of arc: ";
+        cin >> minute;
+        cout << "Finally, enter the seconds of arc: ";
+        cin >> second;
+
+        latitude  = degree + minute * MINUTE2DEGREE + second * SECOND2MINUTE * MINUTE2DEGREE;
+        cout << degree << " degrees, " << minute << " minutes, " << second \
+                << " seconds = " << latitude << " degress" << endl;
+        return 0;
+}
+
+```
 ### 4. Write a program that asks the user to enter the number of seconds as an integer value (use type long, or, if available, long long) and that then displays the equivalent time in days, hours, minutes, and seconds. Use symbolic constants to represent the number of hours in the day, the number of minutes in an hour, and the number of seconds in a minute.The output should look like this:
 ```
 Enter the number of seconds: 31600000
 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
+```
+```
+#include <iostream>
+
+#define HOURINDAY               24
+#define MINUTEINHOUR            60
+#define SECONDINMINUTE          60
+
+int main()
+{
+        using namespace std;
+        unsigned long long int seconds = 0, days = 0, hour = 0, minute = 0, second = 0;
+        cout << "Enter the number of seconds: ";
+        cin >> seconds;
+        second = seconds % SECONDINMINUTE;
+        minute = seconds / SECONDINMINUTE;
+
+        hour = minute / MINUTEINHOUR;
+        minute %= MINUTEINHOUR;
+
+        days = hour / HOURINDAY;
+        hour %= HOURINDAY;
+        cout << seconds << " seconds = " << days << " days, " << hour << " hours, "\
+                << minute <<" minutes, " << second << "seconds" << endl;
+        return 0;
+}
+
 ```
 ### 5. Write a program that requests the user to enter the current world population and the current population of the U.S. (or of some other nation of your choice). Store the information in variables of type long long. Have the program display the percent that the U.S. (or other nation’s) population is of the world’s population.The output should look something like this:
 ```
