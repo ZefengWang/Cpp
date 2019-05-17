@@ -231,7 +231,42 @@ int main()
 
 ```
 ### 6. Write a program that asks how many miles you have driven and how many gallons of gasoline you have used and then reports the miles per gallon your car has gotten. Or, if you prefer, the program can request distance in kilometers and petrol in liters and then report the result European style, in liters per 100 kilometers
+```
+#include <iostream>
+
+int main()
+{
+	using namespace std;
+	double miles = 0.0, gallons = 0.0, report = 0.0;
+	cout << "Enter the miles your car has driven: ";
+	cin >> miles;
+	cout << "Enter the gallons your car used: ";
+	cin >> gallons;
+	report = miles / gallons;
+	cout << "Reports: " << report << " miles per gallon your car has gotten." << endl;
+	return 0;
+}
+```
 
 ### 7. Write a program that asks you to enter an automobile gasoline consumption figure in the European style (liters per 100 kilometers) and converts to the U.S. style of miles per gallon. Note that in addition to using different units of measurement, the U.S. approach (distance / fuel) is the inverse of the European approach (fuel / distance). Note that 100 kilometers is 62.14 miles, and 1 gallon is 3.875 liters.Thus, 19 mpg is about 12.4 l/100 km, and 27 mpg is about 8.7 l/100 km.
+```
+// mpg: miles / gallon
+// European: liters / 100 km
+// 100 km = 62.14 miles
+// 1 gallon  = 3.875liters
 
+// 1 mpg = 1 mile / 1 gallon = 1.0/62.14 / 3.875 (100km / liters)
+#include <iostream>
+
+#define FACTOR 62.14*3.875
+
+int main()
+{
+	using namespace std;
+	
+	double EU = 0.0, US = 0.0;
+	
+	return 0;
+}
+```
 
