@@ -263,9 +263,11 @@ int main()
 int main()
 {
 	using namespace std;
-	
 	double EU = 0.0, US = 0.0;
-	
+	cout << "Enter an automobile gasoline consumption figure in the European style:\nliters per 100 kilometers: ______\b\b\b\b"
+	cin >> EU;
+	US = FACTOR/EU;
+	cout << "U.S. style of miles per gallon: " << US <<" mpg" << endl; 
 	return 0;
 }
 ```
