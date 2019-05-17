@@ -27,7 +27,7 @@ unknown
 33L is storage in the long variable, 33 is int
 ```
 ### 5. Consider the two C++ statements that follow:
-```
+``` cpp (type)
 char grade = 65;
 char grade = 'A';
 ```
@@ -37,7 +37,7 @@ char grade = 'A';
 not very the same, 65 is storaged as a int but 'A' is a char
 ```
 ### 6. How could you use C++ to find out which character the code 88 represents? Come up with at least two ways.
-```
+``` cpp (type)
 cout << char(88) << endl;
 
 cout << (char)88 << endl;
@@ -65,12 +65,12 @@ d. 4.5
 e. 3
 ```
 ### 9. Suppose x1 and x2 are two type double variables that you want to add as integers and assign to an integer variable. Construct a C++ statement for doing so.What if you want to add them as type double and then convert to int?
-```
+``` cpp (type)
 int c = int(x1) + int(x2);
 int c = int (x1 + x2);
 ```
 ### 10. What is the variable type for each of the following declarations?
-```
+``` cpp (type)
 a. auto cars = 15;
 b. auto iou = 150.37f;
 c. auto level = 'B';
@@ -86,7 +86,7 @@ e. double
 ```
 ## Programming Exercises
 ### 1. Write a short program that asks for your height in integer inches and then converts your height to feet and inches. Have the program use the underscore character to indicate where to type the response. Also use a const symbolic constant to represent the conversion factor.
-```
+``` cpp (type)
 #include <iostream>
 
 int main()
@@ -104,7 +104,7 @@ int main()
 ```
 
 ### 2. Write a short program that asks for your height in feet and inches and your weight in pounds. (Use three variables to store the information.) Have the program report your body mass index (BMI).To calculate the BMI, first convert your height in feet and inches to your height in inches (1 foot = 12 inches).Then convert your height in inches to your height in meters by multiplying by 0.0254.Then convert your weight in pounds into your mass in kilograms by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms by the square of your height in meters. Use symbolic constants to represent the various conversion factors.
-```
+``` cpp (type)
 #include <iostream>
 
 #define FOOT2INCH		12
@@ -143,7 +143,7 @@ Next, enter the minutes of arc: 51
 Finally, enter the seconds of arc: 19
 37 degrees, 51 minutes, 19 seconds = 37.8553 degrees
 ```
-```
+``` cpp (type)
 #include <iostream>
 
 #define SECOND2MINUTE (1.0/60.0)
@@ -174,7 +174,7 @@ int main()
 Enter the number of seconds: 31600000
 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
 ```
-```
+``` cpp (type)
 #include <iostream>
 
 #define HOURINDAY               24
@@ -208,7 +208,7 @@ Enter the population of the US: 310783781
 The population of the US is 4.50492% of the world population.
 ```
 ### You can use the Internet to get more recent figures.
-```
+``` cpp (type)
 #include <iostream>
 #include <string>
 int main()
@@ -231,7 +231,7 @@ int main()
 
 ```
 ### 6. Write a program that asks how many miles you have driven and how many gallons of gasoline you have used and then reports the miles per gallon your car has gotten. Or, if you prefer, the program can request distance in kilometers and petrol in liters and then report the result European style, in liters per 100 kilometers
-```
+``` cpp (type)
 #include <iostream>
 
 int main()
