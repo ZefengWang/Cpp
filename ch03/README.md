@@ -208,6 +208,28 @@ Enter the population of the US: 310783781
 The population of the US is 4.50492% of the world population.
 ```
 ### You can use the Internet to get more recent figures.
+```
+#include <iostream>
+#include <string>
+int main()
+{
+	using namespace std;
+	unsigned long long int world_p = 0, nation_p = 0;
+	string nation;
+	double percent = 0.0;
+	cout << "Enter the nation you belong: ";
+	cin >> nation;
+	cout << "Enter the world's population: ";
+	cin >> world_p;
+	cout << "Enter the population of the " << nation <<": ";
+	cin >> nation_p;
+	percent = (double)nation_p / (double)world_p * 100.0;
+	cout << "The population of the " << nation << " is " << percent \
+		<< "% of the world population." << endl;
+	return 0;
+}
+
+```
 ### 6. Write a program that asks how many miles you have driven and how many gallons of gasoline you have used and then reports the miles per gallon your car has gotten. Or, if you prefer, the program can request distance in kilometers and petrol in liters and then report the result European style, in liters per 100 kilometers
 
 ### 7. Write a program that asks you to enter an automobile gasoline consumption figure in the European style (liters per 100 kilometers) and converts to the U.S. style of miles per gallon. Note that in addition to using different units of measurement, the U.S. approach (distance / fuel) is the inverse of the European approach (fuel / distance). Note that 100 kilometers is 62.14 miles, and 1 gallon is 3.875 liters.Thus, 19 mpg is about 12.4 l/100 km, and 27 mpg is about 8.7 l/100 km.
