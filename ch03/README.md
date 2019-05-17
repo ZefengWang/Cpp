@@ -90,13 +90,22 @@ int main()
 	int height;
 	cout << "Please input your height in inch: ___" << "\b\b\b";
 	cin >> height;
-	cout << "Your height in feet is " << height * factor << "." << endl;
+	cout << "Your height in inches is: " << height          << "." << endl;
+	cout << "Your height in feet   is: " << height * factor << "." << endl;
 
 	return 0;
 }
 ```
 
 ### 2. Write a short program that asks for your height in feet and inches and your weight in pounds. (Use three variables to store the information.) Have the program report your body mass index (BMI).To calculate the BMI, first convert your height in feet and inches to your height in inches (1 foot = 12 inches).Then convert your height in inches to your height in meters by multiplying by 0.0254.Then convert your weight in pounds into your mass in kilograms by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms by the square of your height in meters. Use symbolic constants to represent the various conversion factors.
+```
+#include <iostream>
+
+int main(int argc, char ** argv)
+{
+
+}
+```
 ### 3. Write a program that asks the user to enter a latitude in degrees, minutes, and seconds and that then displays the latitude in decimal format.There are 60 seconds of arc to a minute and 60 minutes of arc to a degree; represent these values with symbolic constants.You should use a separate variable for each input value.A sample run should look like this:
 ```
 Enter a latitude in degrees, minutes, and seconds:
