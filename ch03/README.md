@@ -243,7 +243,8 @@ int main()
 	cout << "Enter the gallons your car used: ";
 	cin >> gallons;
 	report = miles / gallons;
-	cout << "Reports: " << report << " miles per gallon your car has gotten." << endl;
+	cout << "Reports: " << report << " miles per gallon " 
+                << "your car has gotten." << endl;
 	return 0;
 }
 ```
@@ -264,7 +265,9 @@ int main()
 {
 	using namespace std;
 	double EU = 0.0, US = 0.0;
-	cout << "Enter an automobile gasoline consumption figure in the European style:\nliters per 100 kilometers: ______\b\b\b\b";
+	cout << "Enter an automobile gasoline consumption figure"
+                << " in the European style:"
+                << "\nliters per 100 kilometers: ______\b\b\b\b";
 	cin >> EU;
 	US = FACTOR/EU;
 	cout << "U.S. style of miles per gallon: " << US <<" mpg" << endl; 
