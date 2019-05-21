@@ -11,8 +11,8 @@ int main()
 	yams[2] = 6;
 	int yamcosts[3] = {20, 30, 5}; // create, initialize array
 	// NOTE: If your C++ compiler or translator can't initialize
-	// // this array, use static int yamcosts[3] instead of
-	// // int yamcosts[3]
+	// this array, use static int yamcosts[3] instead of
+	// int yamcosts[3]
 	cout << "Total yams = ";
 	cout << yams[0] + yams[1] + yams[2] << endl;
 	cout << "The package with " << yams[1] << " yams costs ";
