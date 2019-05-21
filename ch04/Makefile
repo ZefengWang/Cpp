@@ -9,6 +9,7 @@ BIN+=strtype2
 BIN+=strtype3
 BIN+=strtype4
 BIN+=rawstr
+BIN+=structur
 
 CXXFLAGS+=-std=c++11
 
