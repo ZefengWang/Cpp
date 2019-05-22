@@ -10,6 +10,9 @@ BIN+=strtype3
 BIN+=strtype4
 BIN+=rawstr
 BIN+=structur
+BIN+=assgn_st
+BIN+=arrstr
+BIN+=bitfield
 
 CXXFLAGS+=-std=c++11
 
