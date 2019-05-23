@@ -1,33 +1,40 @@
-BIN+=arrayone
-BIN+=string
-BIN+=instr1
-BIN+=instr2
-BIN+=instr3
-BIN+=numstr
-BIN+=strtype1
-BIN+=strtype2
-BIN+=strtype3
-BIN+=strtype4
-BIN+=rawstr
-BIN+=structur
-BIN+=assgn_st
-BIN+=arrstr
-BIN+=bitfield
-BIN+=address
-BIN+=pointer
-BIN+=init_ptr
-BIN+=use_new
-BIN+=memleap
-BIN+=arraynew
-BIN+=addpntrs
+#!/bin/sh 
+ #BIN+=arrayone
+ #BIN+=string
+ #BIN+=instr1
+ #BIN+=instr2
+ #BIN+=instr3
+ #BIN+=numstr
+ #BIN+=strtype1
+ #BIN+=strtype2
+ #BIN+=strtype3
+ #BIN+=strtype4
+ #BIN+=rawstr
+ #BIN+=structur
+ #BIN+=assgn_st
+ #BIN+=arrstr
+ #BIN+=bitfield
+ #BIN+=address
+ #BIN+=pointer
+ #BIN+=init_ptr
+ #BIN+=use_new
+ #BIN+=memleap
+ #BIN+=arraynew
+ #BIN+=addpntrs
+ #BIN+=ptrstr
+ #BIN+=mixtype
+ #BIN+=choices
 
+
+OBJ=${BIN[*] }
 CXXFLAGS+=-std=c++11
 CXXFLAGS+=-g
 #CXXFLAGS+=-O3
 
 
 all: $(BIN)
-
+	@for files in $(ls *.cpp);do BIN+=${files#.cpp};done
+	@echo ${BIN}
 .PYTHON: clean
 
 clean:

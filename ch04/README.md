@@ -1,6 +1,5 @@
 # **Answer for ch04**
 ## **Summary**
----
 1. Arrays, structures, and pointers are three C++ compound types. An array can hold several values, all of the same type, in a single data object. By using an index, or subscript, you can access the individual elements in an array.
 2. A structure can hold several values of different types in a single data object, and you can use the membership operator ( . ) to access individual members. The first step in using structures is to create a structure template that defines what members the structure holds. The name, or tag, for this template then becomes a new type identifier.You can then declare structure variables of that type.
 3. A union can hold a single value, but it can be of a variety of types, with the member name indicating which mode is being used.
@@ -13,7 +12,6 @@
 10. The Standard Template Library (STL), added by the C++98 standard, provides a vector template class that provides an alternative to do-it-yourself dynamic arrays. C++11 provides an array template class that offers an alternative to fixed-sized built-in arrays.
 ---
 ## **Chapter Review**
----
 ### 1. How would you declare each of the following?
 ```
 a. actors is an array of 30 char .
@@ -21,7 +19,21 @@ b. betsie is an array of 100 short .
 c. chuck is an array of 13 float .
 d. dipsea is an array of 64 long double .
 ```
+``` cpp (type)
+a. char actors[30];
+b. short betsie[100];
+c. float chuck[13];
+d. long double dipsea [64];
+```
 ### 2. Does Chapter Review Question 1 use the array template class instead of built-in arrays.
+``` cpp (type)
+#include <array>
+using std::array;
+array<char, 30> actors;
+array<short,100> betsie;
+array<float,13> chuck;
+array<long double , 64>dipsea;
+```
 ### 3. Declare an array of five int s and initialize it to the first five odd positive integers.
 ### 4. Write a statement that assigns the sum of the first and last elements of the array in Question 3 to the variable even .
 ### 5. Write a statement that displays the value of the second element in the float array ideas .
@@ -42,7 +54,6 @@ cout << (int *) “Home of the jolly bytes”;
 ### 17. Declare a vector object of 10 string objects and an array object of 10 string objects. Show the necessary header files and don’t use `using` . Do use a `const` for the number of strings.
 ---
 ## **Programming Exercises**
----
 ### 1. Write a C++ program that requests and displays information as shown in the following example of output:
 ```
 What is your first name? Betty Sue
