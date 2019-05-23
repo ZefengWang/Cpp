@@ -18,6 +18,8 @@ BIN+=pointer
 BIN+=init_ptr
 BIN+=use_new
 BIN+=memleap
+BIN+=arraynew
+BIN+=addpntrs
 
 CXXFLAGS+=-std=c++11
 CXXFLAGS+=-g
