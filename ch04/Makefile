@@ -13,6 +13,7 @@ BIN+=structur
 BIN+=assgn_st
 BIN+=arrstr
 BIN+=bitfield
+BIN+=address
 
 CXXFLAGS+=-std=c++11
 
