@@ -31,6 +31,7 @@ int main()
 	std::cout << "t1, a,b,c,d,e,f,g,h: " 	<< std::hex << "\n" << (unsigned long int)&t1 << "\n" << (unsigned long int)&t1.a 
 		<< "\n" << (unsigned long int)&t1.b << "\n"<< (unsigned long int)&t1.c <<"\n"<< (unsigned long int)&t1.d << "\n" << (unsigned long int)&t1.e 
 		<< "\n" << (unsigned long int)&t1.f << "\n" << (unsigned long int)&t1.g << "\n" << (unsigned long int)&t1.h << std::endl;
+	std::cout << std::hex << "value of t1: " << *(unsigned long int *)&t1 << std::endl;
 	bitfield bit1 {true,2,3,3,127,0xbb,0x7fff,0x1ffff};
 	std::cout << "sizeof bit1 is: " << sizeof bit1 << std::endl;
 	std::cout << std::hex << std::endl;
@@ -38,7 +39,7 @@ int main()
 	*ptr &= 0xffffffff00ffffff;
 	*ptr |= 0x00000000aa000000;
 	std::cout << "0x" << std::hex<<(*(( int*)&bit1))     << " addr: " << &bit1       << std::endl;
-	std::cout << "0x" << std::hex<<(*(( int*)&bit1 + 1)) << " addr: " << std::hex << ((unsigned int *)&bit1 + 1)  << std::endl;
+	std::cout << "0x" << std::hex<<(*(( int*)&bit1 + 1)) << " addr: " << std::hex << (unsigned long)(&bit1.sev)  << std::endl;
 	std::cout << "one is: 0x" <<std::hex<< (int)bit1.one <<std::endl;
 	std::cout << "two is: 0x" <<std::hex<< (int)bit1.two <<std::endl;
 	std::cout << "thr is: 0x" <<std::hex<< (int)bit1.thr <<std::endl;

@@ -14,8 +14,15 @@ BIN+=assgn_st
 BIN+=arrstr
 BIN+=bitfield
 BIN+=address
+BIN+=pointer
+BIN+=init_ptr
+BIN+=use_new
+BIN+=memleap
 
 CXXFLAGS+=-std=c++11
+CXXFLAGS+=-g
+#CXXFLAGS+=-O3
+
 
 all: $(BIN)
 
