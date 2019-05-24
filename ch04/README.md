@@ -163,27 +163,93 @@ Note that the program should be able to accept first names that comprise more th
 ``` cpp (type)
 #include <iostream>
 #include <vector>
+#include <string>
+struct student
+{
+    std::string firstname;
+    std::string lastname;
+    char grade;
+    int age;
+};
 int main()
 {
     using namespace std;
-    int size;
-    cout << "Enter a number size of array: ";
-    cin >> size;
-    int * s1 = new int [size];
-    
-    vector<int> s2(size);
-    delete [] s1;
+    student *ss = new student;
+    cout << "What is your first name? ";
+    cin >> ss->firstname;
+    cout << "What is your last  name? ";
+    cin >> ss->lastname;
+    cout << "What letter grade do you deserve? ";
+    cin >> ss->grade;
+    cout << "What is your age? ";
+    cin >> ss->age;
+
+    cout << "Name:  " << ss->lastname << ", " << ss->firstname << endl;
+    cout << "Grade: " << ss->grade  << endl;
+    cout << "Age: " << ss->age << endl;
+    delete ss;
     return 0;
 }
 ```
 ### 2. Rewrite Listing 4.4, using the C++ string class instead of char arrays.
-### 3. Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string, consisting of the user’s last name followed by a comma, a space, and first name. Use char arrays and functions from the cstring header file.A sample run could look like this:
+```cpp
+// instr2.cpp -- reading more than one word with getline
+#include <iostream>
+#include <string>
+int main()
+{
+    using namespace std;
+    
+    string name;
+    string dessert;
+    cout << "Enter your name:\n";
+    cin.getline(name, ArSize); // reads through newline
+    cout << "Enter your favorite dessert:\n";
+    cin.getline(dessert);
+    cout << "I have some delicious " << dessert;
+    cout << " for you, " << name << ".\n";
+    return 0;
+}
+```
+### 3. Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string, consisting of the user’s last name followed by a comma, a space, and first name. Use char arrays and functions from the cstring header file. A sample run could look like this:
 ```
 Enter your first name: Flip
 Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 ``` cpp (type)
+#include <cstring>
+#include <iostream>
+
+#define BUFFSIZE 80
+int main()
+{
+    using namespace std;
+    char firstname [BUFFSIZE];
+    char lastname  [BUFFSIZE];
+    char full [BUFFSIZE+BUFFSIZE] {0};
+    cout << "Enter your first name: ";
+    cin.get(firstname, BUFFSIZE).get();
+    cout << "Enter your last  name: ";
+    cin.get(lastname,  BUFFSIZE).get();
+    if (NULL == strncat(full,lastname,BUFFSIZE))
+    {
+        cout << "\e[1;31merror: \e[0mstrncat" << endl;
+        exit(0);
+    }
+    if (NULL == strncat(full,", ",3))
+    {
+        cout << "\e[1;31merror: \e[0mstrncat" << endl;
+        exit(0);
+    }
+    if (NULL == strncat(full,firstname,BUFFSIZE))
+    {
+        cout << "\e[1;31merror: \e[0mstrncat" << endl;
+        exit(0);
+    }
+    cout << "Here’s the information in a single string: " << full << endl;
+    return 0;
+}
 ```
 ### 4. Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string consisting of the user’s last name followed by a comma, a space, and first name. Use string objects and methods from the string header file.A sample run could look like this:
 ```
