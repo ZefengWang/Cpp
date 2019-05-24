@@ -119,8 +119,34 @@ the string constant, and it will be convert
 from (char*) to (int*).
 ```
 ### 15. Write a code fragment that dynamically allocates a structure of the type described in Question 8 and then reads a value for the kind member of the structure.
-### 16. Listing 4.6 illustrates a problem created by following numeric input with line-oriented string input. How would replacing this: `cin.getline(address,80);` with this: `cin >> address;` affect the working of this program?
+```cpp
+fish *ptr = new fish;
+std::cout << "the kind is: " << ptr->kind << std::endl;
+```
+### 16. Listing 4.6 illustrates a problem created by following numeric input with line-oriented string input. How would replacing this: 
+```
+cin.getline(address,80);
+```
+### with this: 
+```
+cin >> address;
+```
+### affect the working of this program?
+```
+answer: 
+address is a char array,
+if you input over 79 charactors the cin will write the byte don't belongs the array.
+```
 ### 17. Declare a vector object of 10 string objects and an array object of 10 string objects. Show the necessary header files and don’t use `using` . Do use a `const` for the number of strings.
+```cpp
+#include <string>
+#include <vector>
+#include <array>
+
+const int num = 10;
+std::vector<stad::string> strvec(num);
+std::array<std::string,num> strarr;
+```
 ---
 ## **Programming Exercises**
 ### 1. Write a C++ program that requests and displays information as shown in the following example of output:
@@ -135,6 +161,20 @@ Age: 22
 ```
 Note that the program should be able to accept first names that comprise more than one word.Also note that the program adjusts the grade downward—that is, up one letter.Assume that the user requests an A, a B, or a C so that you don’t have to worry about the gap between a D and an F.
 ``` cpp (type)
+#include <iostream>
+#include <vector>
+int main()
+{
+    using namespace std;
+    int size;
+    cout << "Enter a number size of array: ";
+    cin >> size;
+    int * s1 = new int [size];
+    
+    vector<int> s2(size);
+    delete [] s1;
+    return 0;
+}
 ```
 ### 2. Rewrite Listing 4.4, using the C++ string class instead of char arrays.
 ### 3. Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string, consisting of the user’s last name followed by a comma, a space, and first name. Use char arrays and functions from the cstring header file.A sample run could look like this:
