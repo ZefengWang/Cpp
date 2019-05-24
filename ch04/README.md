@@ -109,7 +109,7 @@ int main()
 }
 ```
 ### 14. Is the following valid code? If so, what does it print?
-```
+```cpp
 cout << (int *) “Home of the jolly bytes”;
 ```
 ```plain
@@ -124,11 +124,11 @@ fish *ptr = new fish;
 std::cout << "the kind is: " << ptr->kind << std::endl;
 ```
 ### 16. Listing 4.6 illustrates a problem created by following numeric input with line-oriented string input. How would replacing this: 
-```
+```cpp
 cin.getline(address,80);
 ```
 ### with this: 
-```
+```cpp
 cin >> address;
 ```
 ### affect the working of this program?
@@ -193,7 +193,6 @@ int main()
 ```
 ### 2. Rewrite Listing 4.4, using the C++ string class instead of char arrays.
 ```cpp
-// instr2.cpp -- reading more than one word with getline
 #include <iostream>
 #include <string>
 int main()
@@ -258,12 +257,47 @@ Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 ``` cpp (type)
+#include <string>
+#include <iostream>
+
+int main()
+{
+    using namespace std;
+    string firstname, lastname, full;
+    cout << "Enter your first name: ";
+    (cin >> firstname).get();
+    cout << "Enter your last  name: ";
+    (cin >> lastname).get();
+    full = lastname + ", " + firstname;
+    cout << "Here’s the information in a single string: " << full << endl;
+    return 0;
+}
 ```
 ### 5. The CandyBar structure contains three members.The first member holds the brand name of a candy bar.The second member holds the weight (which may have a fractional part) of the candy bar, and the third member holds the number of calories (an integer value) in the candy bar.Write a program that declares such a structure and creates a CandyBar variable called snack , initializing its members to "Mocha Munch" , 2.3 , and 350 , respectively.The initialization should be part of the declaration for snack . Finally, the program should display the contents of the snack variable.
 ``` cpp (type)
+#include <string>
+#include <iostream>
+
+struct CandyBar
+{
+    std::string branch;
+    double weight;
+    int calories;
+};
+
+int main()
+{
+    using namespace std;
+    CandyBar snack {"Mocha Munch" , 2.3 , 350};
+    cout << "Branch: " << snack.branch << endl
+         << "Weight: " << snack.weight << endl
+         << "Calories: " << snack.calories << endl;
+    return 0;
+}
 ```
 ### 6. The CandyBar structure contains three members, as described in Programming Exercise 5. Write a program that creates an array of three CandyBar structures, initializes them to values of your choice, and then displays the contents of each structure.
 ``` cpp (type)
+
 ```
 ### 7. William Wingate runs a pizza-analysis service. For each pizza, he needs to record the following information:
 1. The name of the pizza company, which can consist of more than one word
@@ -271,13 +305,17 @@ Here’s the information in a single string: Fleming, Flip
 3. The weight of the pizza
 ### Devise a structure that can hold this information and write a program that uses a structure variable of that type.The program should ask the user to enter each of the preceding items of information, and then the program should display that information. Use cin (or its methods) and cout .
 ``` cpp (type)
+
 ```
 ### 8. Do Programming Exercise 7 but use new to allocate a structure instead of declaring a structure variable.Also have the program request the pizza diameter before it requests the pizza company name.
 ``` cpp (type)
+
 ```
 ### 9. Do Programming Exercise 6, but instead of declaring an array of three CandyBar structures, use new to allocate the array dynamically.
 ```
+
 ```
 ### 10. Write a program that requests the user to enter three times for the 40-yd dash (or 40-meter, if you prefer) and then displays the times and the average. Use an array object to hold the data. (Use a built-in array if array is not available.)
 ``` cpp (type)
+
 ```
