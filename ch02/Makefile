@@ -1,27 +1,15 @@
+# Nakefile created by zefengwang
+# test on centos 7 (x86_64)
+# with gcc version 4.8.5
 
-CC=gcc
-CXXFLAGS=
-LDFLAGS=
+SRC :=$(wildcard *.cpp ./src/*.cpp) $(wildcard *.cc ./src/*.cc)
+OBJ :=$(patsubst %.cpp, %.o,$(wildcard *.cpp ./src/*.cpp)) $(patsubst %.cc, %.o,$(wildcard *.cc ./src/*.cc))
+BIN :=$(patsubst %.o, %, $(OBJ))
+CXXFLAGS+=-std=c++11
 LDLIBS+=-lstdc++
-
-BIN+=ex01
-BIN+=ex02
-BIN+=ex03
-BIN+=ex04
-BIN+=ex05
-BIN+=ex06
-BIN+=ex07
-#SRC=$(BIN).cc
-#OBJ=$(BIN).o
-
 all: $(BIN)
-#BIN: $(OBJ)
-#	$(CC) $(OBJ) $(CXXFLAGS) $(LDFLAGS) $(LIBS) -o $(BIN)
-
-#OBJ: $(SRC)
-#	$(CC) -c $(SRC) -o $(OBJ)
-
-.PHONY: clean
-clean:
-	-rm -rf $(BIN) $(OBJ)
-
+BIN: $(OBJ)
+OBJ: $(SRC)
+.PYTHON: clean cleanobj
+clean: cleanobj;-rm -f $(BIN)
+cleanobj: ;-rm -f $(OBJ)
