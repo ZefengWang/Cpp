@@ -3,7 +3,8 @@
 int main()
 {
 	using namespace std;
-	double * p3 = new double [3]; // space for 3 doubles
+	int size = 3;
+	double * p3 = new double [size]; // space for 3 doubles
 	p3[0] = 0.2;
 	// treat p3 like an array name
 	p3[1] = 0.5;

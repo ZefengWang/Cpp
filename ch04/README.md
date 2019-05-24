@@ -32,22 +32,91 @@ using std::array;
 array<char, 30> actors;
 array<short,100> betsie;
 array<float,13> chuck;
-array<long double , 64>dipsea;
+array<long double , 64> dipsea;
 ```
 ### 3. Declare an array of five int s and initialize it to the first five odd positive integers.
+``` cpp 
+#include <array>
+using std::array;
+array<int,5> s {1,3,5,7,9};
+```
 ### 4. Write a statement that assigns the sum of the first and last elements of the array in Question 3 to the variable even .
+``` cpp 
+int even = s[0] + s[4];
+int even = s.at(0) + s.at(4);
+```
 ### 5. Write a statement that displays the value of the second element in the float array ideas .
+```cpp
+#include <iostream>
+std::cout << ideas[1] << std::endl;
+```
 ### 6. Declare an array of char and initialize it to the string "cheeseburger" .
+```cpp
+char strarr[] = "cheeseburger";
+```
 ### 7. Declare a string object and initialize it to the string "Waldorf Salad" .
+```cpp
+#include <string>
+std::string str = "Waldorf Salad";
+```
 ### 8. Devise a structure declaration that describes a fish.The structure should include the kind, the weight in whole ounces, and the length in fractional inches.
+```cpp
+struct fish
+{
+    std::string kind;
+    int weight;
+    double length;
+};
+```
 ### 9. Declare a variable of the type defined in Question 8 and initialize it.
+```cpp
+fish golden {"golden", 2, 2.5};
+```
 ### 10. Use enum to define a type called Response with the possible values `Yes` , `No` , and `Maybe` . `Yes` should be `1` , `No` should be `0` , and `Maybe` should be `2` .
+```cpp
+enum Response {No=0,Yes,Maybe};
+```
 ### 11. Suppose ted is a double variable. Declare a pointer that points to ted and use the pointer to display ted ’s value.
+```cpp
+#include <iostream>
+double ted = 2.5;
+double *p_ted = &ted;
+std::cout << *p_ted << std::endl;
+```
 ### 12. Suppose treacle is an array of 10 float s. Declare a pointer that points to the first element of treacle and use the pointer to display the first and last elements of the array.
+```cpp
+#include <iostream>
+float treacle [10];
+float *ptr = &treacle[0];
+std::cout << "The first element is: " << *ptr
+    << " and the last is: " << *(ptr+10) << std::endl;
+```
 ### 13. Write a code fragment that asks the user to enter a positive integer and then creates a dynamic array of that many int s. Do this by using new , then again using a vector object.
+```cpp
+#include <iostream>
+#include <vector>
+int main()
+{
+    using namespace std;
+    int size;
+    cout << "Enter a number size of array: ";
+    cin >> size;
+    int * s1 = new int [size];
+    
+    vector<int> s2(size);
+    delete [] s1;
+    return 0;
+}
+```
 ### 14. Is the following valid code? If so, what does it print?
 ```
 cout << (int *) “Home of the jolly bytes”;
+```
+```plain
+Yes, it is right.
+“Home of the jolly bytes” will be the first address of 
+the string constant, and it will be convert 
+from (char*) to (int*).
 ```
 ### 15. Write a code fragment that dynamically allocates a structure of the type described in Question 8 and then reads a value for the kind member of the structure.
 ### 16. Listing 4.6 illustrates a problem created by following numeric input with line-oriented string input. How would replacing this: `cin.getline(address,80);` with this: `cin >> address;` affect the working of this program?
