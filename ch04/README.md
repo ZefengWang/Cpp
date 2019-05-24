@@ -297,7 +297,38 @@ int main()
 ```
 ### 6. The CandyBar structure contains three members, as described in Programming Exercise 5. Write a program that creates an array of three CandyBar structures, initializes them to values of your choice, and then displays the contents of each structure.
 ``` cpp (type)
+#include <string>
+#include <iostream>
 
+struct CandyBar
+{
+    std::string branch;
+    double weight;
+    int calories;
+};
+
+int main()
+{
+    using namespace std;
+    CandyBar snack[3];
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Enter the " << i <<"th branch: ";
+        cin >> snack[i].branch;
+        cout << "Enter the " << i <<"th weight: ";
+        cin >> snack[i].weight;
+        cout << "Enter the " << i <<"th calories: ";
+        cin >> snack[i].calories;
+        cout << endl;
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "The " << i << "th Branch: " << snack[i].branch << endl
+             << "The " << i << "th Weight: " << snack[i].weight << endl
+             << "The " << i << "th Calories: " << snack[i].calories << endl << endl;
+    }
+    return 0;
+}
 ```
 ### 7. William Wingate runs a pizza-analysis service. For each pizza, he needs to record the following information:
 1. The name of the pizza company, which can consist of more than one word
