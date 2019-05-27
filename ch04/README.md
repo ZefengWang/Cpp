@@ -19,14 +19,14 @@ b. betsie is an array of 100 short .
 c. chuck is an array of 13 float .
 d. dipsea is an array of 64 long double .
 ```
-``` cpp (type)
+``` cpp 
 a. char actors[30];
 b. short betsie[100];
 c. float chuck[13];
 d. long double dipsea [64];
 ```
 ### 2. Does Chapter Review Question 1 use the array template class instead of built-in arrays.
-``` cpp (type)
+``` cpp 
 #include <array>
 using std::array;
 array<char, 30> actors;
@@ -160,7 +160,7 @@ Grade: C
 Age: 22
 ```
 Note that the program should be able to accept first names that comprise more than one word.Also note that the program adjusts the grade downward—that is, up one letter.Assume that the user requests an A, a B, or a C so that you don’t have to worry about the gap between a D and an F.
-``` cpp (type)
+``` cpp 
 #include <iostream>
 #include <vector>
 #include <string>
@@ -216,7 +216,7 @@ Enter your first name: Flip
 Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
-``` cpp (type)
+``` cpp 
 #include <cstring>
 #include <iostream>
 
@@ -256,7 +256,7 @@ Enter your first name: Flip
 Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
-``` cpp (type)
+``` cpp 
 #include <string>
 #include <iostream>
 
@@ -274,7 +274,7 @@ int main()
 }
 ```
 ### 5. The CandyBar structure contains three members.The first member holds the brand name of a candy bar.The second member holds the weight (which may have a fractional part) of the candy bar, and the third member holds the number of calories (an integer value) in the candy bar.Write a program that declares such a structure and creates a CandyBar variable called snack , initializing its members to "Mocha Munch" , 2.3 , and 350 , respectively.The initialization should be part of the declaration for snack . Finally, the program should display the contents of the snack variable.
-``` cpp (type)
+``` cpp 
 #include <string>
 #include <iostream>
 
@@ -296,7 +296,7 @@ int main()
 }
 ```
 ### 6. The CandyBar structure contains three members, as described in Programming Exercise 5. Write a program that creates an array of three CandyBar structures, initializes them to values of your choice, and then displays the contents of each structure.
-``` cpp (type)
+``` cpp 
 #include <string>
 #include <iostream>
 
@@ -335,7 +335,7 @@ int main()
 2. The diameter of the pizza
 3. The weight of the pizza
 ### Devise a structure that can hold this information and write a program that uses a structure variable of that type.The program should ask the user to enter each of the preceding items of information, and then the program should display that information. Use cin (or its methods) and cout .
-``` cpp (type)
+``` cpp
 #include <string>
 #include <iostream>
 
@@ -367,7 +367,7 @@ int main()
 }
 ```
 ### 8. Do Programming Exercise 7 but use new to allocate a structure instead of declaring a structure variable.Also have the program request the pizza diameter before it requests the pizza company name.
-``` cpp (type)
+``` cpp
 #include <string>
 #include <iostream>
 
@@ -399,7 +399,7 @@ int main()
 }
 ```
 ### 9. Do Programming Exercise 6, but instead of declaring an array of three CandyBar structures, use new to allocate the array dynamically.
-```
+```cpp
 #include <string>
 #include <iostream>
 
@@ -436,7 +436,7 @@ int main()
 }
 ```
 ### 10. Write a program that requests the user to enter three times for the 40-yd dash (or 40-meter, if you prefer) and then displays the times and the average. Use an array object to hold the data. (Use a built-in array if array is not available.)
-``` cpp (type)
+``` cpp
 #include <iostream>
 #include <array>
 
