@@ -336,17 +336,127 @@ int main()
 3. The weight of the pizza
 ### Devise a structure that can hold this information and write a program that uses a structure variable of that type.The program should ask the user to enter each of the preceding items of information, and then the program should display that information. Use cin (or its methods) and cout .
 ``` cpp (type)
+#include <string>
+#include <iostream>
 
+struct Pizza
+{
+    std::string company;
+    float diameter;
+    float weight;
+};
+
+int main()
+{
+    using namespace std;
+    Pizza pizza;
+
+    cout << "Enter the company: ";
+    cin >> pizza.company;
+    cout << "Enter the diameter: ";
+    cin >> pizza.diameter;
+    cout << "Enter the weight: ";
+    cin >> pizza.weight;
+
+
+    cout << "The company is: " << pizza.company << endl
+            << "The diameter is : " << pizza.diameter << endl
+            << "The weight is : " << pizza.weight << endl;
+
+    return 0;
+}
 ```
 ### 8. Do Programming Exercise 7 but use new to allocate a structure instead of declaring a structure variable.Also have the program request the pizza diameter before it requests the pizza company name.
 ``` cpp (type)
+#include <string>
+#include <iostream>
 
+struct Pizza
+{
+	std::string company;
+	float diameter;
+	float weight;
+};
+
+int main()
+{
+	using namespace std;
+	Pizza *pizza = new Pizza;
+
+	cout << "Enter the company: ";
+	cin >> pizza->company;
+	cout << "Enter the diameter: ";
+	cin >> pizza->diameter;
+	cout << "Enter the weight: ";
+	cin >> pizza->weight;
+
+
+	cout << "The company is: " << pizza->company << endl
+		<< "The diameter is : " << pizza->diameter << endl
+		<< "The weight is : " << pizza->weight << endl;
+
+	return 0;
+}
 ```
 ### 9. Do Programming Exercise 6, but instead of declaring an array of three CandyBar structures, use new to allocate the array dynamically.
 ```
+#include <string>
+#include <iostream>
 
+struct CandyBar
+{
+    std::string branch;
+    double weight;
+    int calories;
+};
+
+int main()
+{
+    using namespace std;
+    CandyBar *snack = new CandyBar [3];
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Enter the " << i <<"th branch: ";
+        cin >> snack[i].branch;
+        cout << "Enter the " << i <<"th weight: ";
+        cin >> snack[i].weight;
+        cout << "Enter the " << i <<"th calories: ";
+        cin >> snack[i].calories;
+        cout << endl;
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "The " << i << "th Branch: " << snack[i].branch << endl
+             << "The " << i << "th Weight: " << snack[i].weight << endl
+             << "The " << i << "th Calories: " << snack[i].calories << endl << endl;
+    }
+
+    delete [] snack;
+    return 0;
+}
 ```
 ### 10. Write a program that requests the user to enter three times for the 40-yd dash (or 40-meter, if you prefer) and then displays the times and the average. Use an array object to hold the data. (Use a built-in array if array is not available.)
 ``` cpp (type)
+#include <iostream>
+#include <array>
 
+int main()
+{
+    using namespace std;
+    array<double,3> arr;
+    double avr = 0.0;
+    for (int i = 0; i < arr.size(); i ++)
+    {
+        cout << "Enter " << i+1 << "th dash: ";
+        cin >> arr[i];
+        avr += arr[i];
+    }
+    avr /=arr.size();
+    for (int i = 0; i < arr.size(); i ++)
+    {
+        cout << i+1 << "th dash: " << arr[i] << endl;
+    }
+    cout << "average: " << avr << endl;
+    return 0;
+}
 ```
