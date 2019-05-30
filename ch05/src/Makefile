@@ -1,9 +1,9 @@
-# Nakefile created by zefengwang
+# Makefile created by zefengwang
 # test on centos 7 (x86_64)
 # with gcc version 4.8.5
 
 SRC :=$(wildcard *.cpp) $(wildcard *.cc) $(wildcard *.c)
-OBJ :=$(patsubst %.cpp, %.o, $(wildcard *.cpp)) $(patsubst %.cc, %.o, $(wildcard *.cc)) $(patsubst %.c, %.o, $(wildcard *.c))
+OBJ :=$(patsubst %.cpp, %.o,$(wildcard *.cpp)) $(patsubst %.cc, %.o,$(wildcard *.cc)) $(patsubst %.c, %.o,$(wildcard *.c))
 BIN :=$(patsubst %.o, %, $(OBJ))
 CXXFLAGS+=-std=c++11
 LDLIBS+=-lstdc++
