@@ -75,33 +75,15 @@ y = 1,024;
 ``` cpp
 interest = 0.10 × original balance 
 ```
-### At the same time, Cleo invests $100 at 5% compound interest.That is, interest is 5%
-of the current balance, including previous additions of interest:
+### At the same time, Cleo invests $100 at 5% compound interest.That is, interest is 5% of the current balance, including previous additions of interest:
 ``` cpp
 interest = 0.05 × current balance
 ```
-Cleo earns 5% of $100 the first year, giving her $105.The next year she earns 5% of
-$105, or $5.25, and so on.Write a program that finds how many years it takes for
-the value of Cleo’s investment to exceed the value of Daphne’s investment and then
-displays the value of both investments at that time.
-### 5. You sell the book C++ for Fools.Write a program that has you enter a year’s worth
-of monthly sales (in terms of number of books, not of money).The program should
-use a loop to prompt you by month, using an array of char * (or an array of
-string objects, if you prefer) initialized to the month strings and storing the input
-data in an array of int .Then, the program should find the sum of the array con-
-tents and report the total sales for the year.
-### 6. Do Programming Exercise 5 but use a two-dimensional array to store input for 3
-years of monthly sales. Report the total sales for each individual year and for the
-combined years.
-### 7. Design a structure called car that holds the following information about an auto-
-mobile: its make, as a string in a character array or in a string object, and the year
-it was built, as an integer.Write a program that asks the user how many cars to cata-
-log.The program should then use new to create a dynamic array of that many car
-structures. Next, it should prompt the user to input the make (which might consist
-of more than one word) and year information for each structure. Note that this
-requires some care because it alternates reading strings with numeric data (see
-Chapter 4). Finally, it should display the contents of each structure.A sample run
-should look something like the following:
+### Cleo earns 5% of $100 the first year, giving her $105.The next year she earns 5% of $105, or $5.25, and so on.Write a program that finds how many years it takes for the value of Cleo’s investment to exceed the value of Daphne’s investment and then displays the value of both investments at that time.
+### 5. You sell the book C++ for Fools.Write a program that has you enter a year’s worth of monthly sales (in terms of number of books, not of money).The program should use a loop to prompt you by month, using an array of char * (or an array of string objects, if you prefer) initialized to the month strings and storing the input data in an array of int .Then, the program should find the sum of the array contents and report the total sales for the year.
+### 6. Do Programming Exercise 5 but use a two-dimensional array to store input for 3 years of monthly sales. Report the total sales for each individual year and for the combined years.
+### 7. Design a structure called car that holds the following information about an automobile: its make, as a string in a character array or in a string object, and the year it was built, as an integer.Write a program that asks the user how many cars to catalog.The program should then use new to create a dynamic array of that many car structures. Next, it should prompt the user to input the make (which might consist of more than one word) and year information for each structure. Note that this requires some care because it alternates reading strings with numeric data (see Chapter 4). Finally, it should display the contents of each structure.A sample run should look something like the following:
+``` shell
 How many cars do you wish to catalog? 2
 Car #1:
 Please enter the make: Hudson Hornet
@@ -112,6 +94,7 @@ Please enter the year made: 1951
 Here is your collection:
 1952 Hudson Hornet
 1951 Kaiser
+```
 ### 8. Write a program that uses an array of char and a loop to read one word at a time
 until the word done is entered.The program should then report the number of
 words entered (not counting done ).A sample run could look like this:
