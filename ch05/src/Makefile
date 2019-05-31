@@ -5,7 +5,7 @@
 SRC :=$(wildcard *.cpp) $(wildcard *.cc) $(wildcard *.c)
 OBJ :=$(patsubst %.cpp, %.o,$(wildcard *.cpp)) $(patsubst %.cc, %.o,$(wildcard *.cc)) $(patsubst %.c, %.o,$(wildcard *.c))
 BIN :=$(patsubst %.o, %, $(OBJ))
-CXXFLAGS+=-std=c++11
+CXXFLAGS+=-std=c++11 -g
 LDLIBS+=-lstdc++
 all: $(BIN)
 BIN: $(OBJ)
