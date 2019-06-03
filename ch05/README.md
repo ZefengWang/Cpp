@@ -133,21 +133,46 @@ int main()
 ``` cpp
 // formore.cpp -- more looping with for
 #include <iostream>
-const int ArSize = 16;
+#include <array>
+const int ArSize = 101;
 // example of external declaration
 int main()
 {
-long long factorials[ArSize];
-factorials[1] = factorials[0] = 1LL;
-for (int i = 2; i < ArSize; i++)
-factorials[i] = i * factorials[i-1];
-for (int i = 0; i < ArSize; i++)
-std::cout << i << "! = " << factorials[i] << std::endl;
-return 0;
+	std::array< long double, ArSize > factorials;
+	factorials[1] = factorials[0] = 1LL;
+	std::cout << std::fixed;
+	std::cout.precision(0);
+	for (int i = 2; i < ArSize; i++)
+		factorials[i] = i * factorials[i-1];
+	for (int i = 0; i < ArSize; i++)
+		std::cout << i << "! = " << factorials[i] << std::endl;
+	return 0;
 }
+
 ```
 ### 3. Write a program that asks the user to type in numbers.After each entry, the program should report the cumulative sum of the entries to date.The program should terminate when the user enters 0 .
-### 4. Daphne invests $100 at 10% simple interest.That is, every year, the investment earns 10% of the original investment, or $10 each and every year: 
+```cpp
+#include <iostream>
+
+int main()
+{
+	using namespace std;
+	long long int input = 0;
+	long double sum = 0.0;
+	std::cout << std::fixed;
+	std::cout.precision(0);
+	do
+	{   
+		sum += input;
+		cout << "Current Sum is: " << sum << endl << "Enter a number: ";
+		cin >> input;
+	}
+	while (input != 0LL);
+	return 0;
+}
+
+```
+### 4. Daphne invests $100 at 10% simple interest. That is, every year, the investment earns 10% of the original investment, or $10 each and every year: 
 ``` cpp
 interest = 0.10 × original balance 
 ```
@@ -156,8 +181,77 @@ interest = 0.10 × original balance
 interest = 0.05 × current balance
 ```
 ### Cleo earns 5% of $100 the first year, giving her $105.The next year she earns 5% of $105, or $5.25, and so on.Write a program that finds how many years it takes for the value of Cleo’s investment to exceed the value of Daphne’s investment and then displays the value of both investments at that time.
-### 5. You sell the book C++ for Fools.Write a program that has you enter a year’s worth of monthly sales (in terms of number of books, not of money).The program should use a loop to prompt you by month, using an array of char * (or an array of string objects, if you prefer) initialized to the month strings and storing the input data in an array of int .Then, the program should find the sum of the array contents and report the total sales for the year.
+```cpp
+#include <iostream>
+
+const double sim = 0.10, com = 0.05;
+int main()
+{
+	using namespace std;
+	double simple = 100.0, compound = 100.0;
+	int year = 0;
+	std::cout.precision(2);
+	while ( compound <= simple )
+	{
+		simple += 100*sim;
+		compound += compound*com;
+		year ++;
+	}
+	std::cout << std::fixed << "year is: " << year << endl;
+	std::cout << "Daphne's interest is: " << simple << endl;
+	std::cout << "Cleo's interest is: " << compound << endl;
+	return 0;
+}
+
+```
+### 5. You sell the book C++ for Fools. Write a program that has you enter a year’s worth of monthly sales (in terms of number of books, not of money).The program should use a loop to prompt you by month, using an array of char * (or an array of string objects, if you prefer) initialized to the month strings and storing the input data in an array of int .Then, the program should find the sum of the array contents and report the total sales for the year.
+```cpp
+#include <iostream>
+#include <string>
+const int months = 12;
+int main()
+{
+	using namespace std;
+	string month [] = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+	int sell[months] = {0}, total = 0;
+	for(int i = 0; i < months; ++i)
+	{
+		cout << "Enter sell number of " << month[i] << ": ";
+		cin >> sell[i];
+		total += sell[i];
+	}
+	std::cout << "Total sell is: " << total << endl;
+	return 0;
+}
+
+```
 ### 6. Do Programming Exercise 5 but use a two-dimensional array to store input for 3 years of monthly sales. Report the total sales for each individual year and for the combined years.
+```cpp
+#include <iostream>
+#include <string>
+const int months = 12, years = 3;
+int main()
+{
+	using namespace std;
+	string month[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+	int sell[years][months] = {0}, total[years] = {0}, total_y = 0;
+
+	for (int year = 0; year < years; ++year)
+	{
+		for (int i = 0; i < months; ++i)
+		{
+			cout << "Enter sell number of " << month[i] << " in year " << year + 1 << ": ";
+			cin >> sell[year][i];
+			total[year] += sell[year][i];
+		}
+		total_y += total[year];
+	}
+	for (int i = 0; i < years; ++i)
+		std::cout << "Total sell in year " << i + 1 << " is: " << total[i] << endl;
+	std::cout << "Total sell is: " << total_y << endl;
+	return 0;
+}
+```
 ### 7. Design a structure called car that holds the following information about an automobile: its make, as a string in a character array or in a string object, and the year it was built, as an integer.Write a program that asks the user how many cars to catalog.The program should then use new to create a dynamic array of that many car structures. Next, it should prompt the user to input the make (which might consist of more than one word) and year information for each structure. Note that this requires some care because it alternates reading strings with numeric data (see Chapter 4). Finally, it should display the contents of each structure. A sample run should look something like the following:
 ``` shell
 How many cars do you wish to catalog? 2
@@ -171,7 +265,41 @@ Here is your collection:
 1952 Hudson Hornet
 1951 Kaiser
 ```
-### 8. Write a program that uses an array of char and a loop to read one word at a time until the word done is entered.The program should then report the number of words entered (not counting done ).A sample run could look like this:
+```cpp
+#include <iostream>
+#include <string>
+struct Car
+{
+	std::string maker;
+	int year;
+};
+int main()
+{
+	using namespace std;
+	int nums = 0;
+	cout << "How many cars do you wish to catalog? ";
+	cin >> nums;
+	Car * cars = new Car [nums];
+	for (int i = 0; i < nums; ++i)
+	{
+		cout << "Car #" << i+1 << ":" << endl 
+			<<  "Please enter the make: ";
+		cin.get();	
+		getline(cin,cars[i].maker);
+		cout << "Please enter the year made: ";
+		cin >> cars[i].year;
+	}
+	cout << "Here is your collection:" << endl;
+	for (int i = 0; i < nums; ++i)
+	{
+		cout << cars[i].year << " " << cars[i].maker << endl;
+	}
+
+	return 0;
+}
+
+```
+### 8. Write a program that uses an array of char and a loop to read one word at a time until the word done is entered.The program should then report the number of words entered (not counting done ). A sample run could look like this:
 ``` shell
 Enter words (to stop, type the word done):
 anteater birthday category dumpster
@@ -179,7 +307,45 @@ envy finagle geometry done for sure
 You entered a total of 7 words.
 ```
 ### You should include the cstring header file and use the strcmp() function to make the comparison test.
+```cpp
+#include <iostream>
+#include <cstring>
+int main()
+{
+	using namespace std;
+	char str [40] = {0};
+	int total = 0;
+	cout << "Enter words (to stop, type the word done):" << endl;
+	do
+	{
+		cin >> str;
+		total ++;
+	}while (strcmp(str,"done"));
+	total --;	
+	cout << "You entered a total of " << total << " words." << endl;
+	return 0;
+}
+```
 ### 9. Write a program that matches the description of the program in Programming Exercise 8, but use a string class object instead of an array. Include the string header file and use a relational operator to make the comparison test.
+```cpp
+#include <iostream>
+#include <string>
+int main()
+{
+	using namespace std;
+	string str;
+	int total = 0;
+	cout << "Enter words (to stop, type the word done):" << endl;
+	do
+	{
+		cin >> str;
+		total ++;
+	}while (str != "done");
+	total --;	
+	cout << "You entered a total of " << total << " words." << endl;
+	return 0;
+}
+```
 ### 10. Write a program using nested loops that asks the user to enter a value for the number of rows to display. It should then display that many rows of asterisks, with one asterisk in the first row, two in the second row, and so on. For each row, the asterisks are preceded by the number of periods needed to make all the rows display a total number of characters equal to the number of rows.A sample run would look like this:
 ``` shell
 Enter number of rows: 5
@@ -188,4 +354,24 @@ Enter number of rows: 5
 ..***
 .****
 *****
+```
+```cpp
+#include <iostream>
+int main()
+{
+	using namespace std;
+	int rows = 0;
+	cout << "Enter number of rows: ";
+	cin >> rows;
+	for (int i = 1; i <= rows; ++i)
+	{
+		for (int j = rows; j > i; j--)
+			cout << '.';
+		for (int j = 0; j < i; ++j)
+			cout << '*';
+		cout << endl;	
+	}
+	return 0;
+}
+
 ```
