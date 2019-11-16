@@ -8,7 +8,7 @@ int main()
 	string str;
 	for (int i = 0; i < 10; ++i)
 	{
-		cin >> string;
+		cin >> str;
 		cout << arr[i];
 	}
 	return 0;
