@@ -9,6 +9,7 @@ all:
 	$(MAKE) -C ch04
 	$(MAKE) -C ch05
 	$(MAKE) -C ch06
+	$(MAKE) -C ch08
 
 .PHONY: clean
 clean:
@@ -17,4 +18,5 @@ clean:
 	$(MAKE) clean -C ch04
 	$(MAKE) clean -C ch05
 	$(MAKE) clean -C ch06
+	$(MAKE) clean -C ch08
 
