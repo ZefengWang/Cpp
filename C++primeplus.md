@@ -206,5 +206,3 @@
 ## io，file
 
 ## c++标准
-
-*XMind: ZEN - Trial Version*
