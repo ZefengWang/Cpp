@@ -160,3 +160,31 @@ ipc以及信号
 exec有一个族类7个函数
 常用的就是使用fork创建子进程，然后利用exec替换子进程的正文段，数据段，和堆栈，然后父进程用wait等待子进程结束，子进程调用exit
 这就是基本的进程控制步骤
+### **``setuid和setgid``**
+### **解释器文件**
+### **``system``**
+### **进程会计**
+做进程记录
+### **进程调度**
+调整nice值
+```C
+SYNOPSIS
+       #include <unistd.h>
+
+       int nice(int inc);
+```
+`nice`值在`0-(2*NZERO)-1`之间
+nice值越小优先级越高。是有点道理的，你的友好度越高，你的优先级越低
+`NZERO`是系统默认的优先级
+还有用来设置获取优先级的一组接口
+```C
+SYNOPSIS
+       #include <sys/time.h>
+       #include <sys/resource.h>
+
+       int getpriority(int which, id_t who);
+       int setpriority(int which, id_t who, int prio);
+```
+### **进程时间**
+
+## 进程关系
