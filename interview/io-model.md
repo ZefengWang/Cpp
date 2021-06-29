@@ -1,5 +1,10 @@
 # IO 模型
 
+其实io操作分为两大类，同步io和异步io。
+
+阻塞io，非阻塞io，io复用，信号驱动io 都是 **同步io** ，定义是阻塞进程直到io操作完成  
+异步io是librt.so提供的aio接口，信号直到io操作完成才产生，期间并不会阻塞进程
+
 ## 阻塞io
 顾名思义就是进行读写数据时，当资源未就绪时，发生阻塞（也就是等待）
 
@@ -9,6 +14,10 @@
 ## 多路复用io
 多路复用的理解，其实是当多个io请求需要在一个线程或者进程内完成。
 先构建一张表，然后调用函数，有io就绪时返回，select，pselect，poll，epoll
+
+select，pselect，poll等函数均可被信号打断返回errno为EINTR
+此时使用pselect可以屏蔽一些信号字，增强程序健壮性
+
 ```C
 /* According to POSIX.1-2001, POSIX.1-2008 */
 #include <sys/select.h>
@@ -102,6 +111,11 @@ int main(void)
 ```bash
 while true; do echo "hello" > select.fifo ; sleep 1; echo "write";done
 ```
-## 异步io
+
+
 ## 信号驱动io
+注册信号处理函数，待io数据就绪，产生信号，进程收到信号以后，阻塞读取数据
 ## 内存映射io
+文件映射到内存，memcpy两个映射区域，实际上是内核数据到内核数据
+## 异步io
+异步io，aio，librt.so 异步io用的不是很多。
