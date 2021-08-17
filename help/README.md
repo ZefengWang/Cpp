@@ -1,3 +1,6 @@
+# liuhui's shell processing
+
+```shell
 #!/bin/bash
 
 # 函数用来处理每个小文件
@@ -44,3 +47,4 @@ done
 # 等待所有任务运行完毕
 wait
 echo "all tasks done"
+```
