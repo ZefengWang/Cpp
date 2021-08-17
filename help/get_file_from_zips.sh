@@ -2,8 +2,8 @@
 
 # 函数用来处理每个小文件
 # 也可以用shell命令来处理
-#使用curl,awk,grep,sed等命令组合
-#但是会比较麻烦，所以用python脚本处理
+# 使用curl,awk,grep,sed等命令组合
+# 但是会比较麻烦，所以用python脚本处理
 function get_files()
 {
 	#python3 your_file_to_processing $1
