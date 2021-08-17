@@ -14,7 +14,7 @@ function get_files()
 }
 
 # 把包含zip文件的目录以参数形式传递进来
-if [ ! -d $1 ]
+if [ -z $1 ]
 then
 	echo "usage: $0 [dir]\n\tdir contains zip files\n"
 	exit 0
