@@ -7,7 +7,6 @@
 function get_files()
 {
 	#python3 your_file_to_processing $1
-	echo "in processing"
 }
 
 # 把包含zip文件的目录以参数形式传递进来
@@ -36,9 +35,8 @@ echo "split done"
 
 for file in $for_debug
 do
-	echo "process $file"
 	# 后面加 &号表示后台进行
-	get_files $file &
+	get_files $for_debug/$file &
 done
 
 # 等待所有任务运行完毕
