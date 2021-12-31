@@ -2,12 +2,28 @@
 CONDA_PKG='Miniconda3-py38_4.10.3-Linux-x86_64'
 SOURCE_URL='https://mirrors.tuna.tsinghua.edu.cn'
 TEMP_PATH="$HOME/.anaconda_tmp"
-PROXY_ADDR='127.0.0.1'
-PROXY_PORT='1080'
+MINICONDA="$HOME/miniconda3"
 QIIME2="qiime2-2021.11-py38-linux-conda"
+
+# get ip address from https://ipaddress.com which domain name we need is raw.githubusercontent.com
+GITHUB_ADDR="185.199.108.133"
+COMMADN="$GITHUB_ADDR raw.githubusercontent.com"
 
 # save orignal path
 RAWPATH=`pwd`
+
+set -x
+
+function zimu()
+{
+
+# edit hosts for github
+grep "raw.githubusercontent.com" /etc/hosts
+if [ $? == 1 ]; then sudo bash -c "echo $GITHUB_ADDR raw.githubusercontent.com >> /etc/hosts"; fi
+
+# check if first install, if not remove them
+if [ -d $TEMP_PATH ]; then rm -rf $TEMP_PATH; fi
+if [ -d $MINICONDA ]; then rm -rf $MINICONDA; fi
 
 # create a new path for store temp files
 mkdir -p $TEMP_PATH
@@ -16,17 +32,17 @@ mkdir -p $TEMP_PATH
 cd $TEMP_PATH
 
 # download miniconda script
-wget -c $SOURCE_URL/anaconda/miniconda/$CONDA_PKG.sh  && { echo "download error!"; exit 1 }
+wget -c "$SOURCE_URL/anaconda/miniconda/$CONDA_PKG.sh"  || { echo "download error!"; return 1; }
 
 # install Miniconda, this way is same as `bash Miniconda3-py38_4.10.3-Linux-x86_64.sh` but not every linux distributes has bash expecially for very old distributes
 chmod +x $CONDA_PKG.sh
-./$CONDA_PKG.sh && { echo "execute scripts failed!"; exit 1 }
+./$CONDA_PKG.sh || { echo "execute scripts failed!"; return 1; }
 
 # update .bashrc in current sessions, source command is same as . command
-. ~/.bashrc
+source ~/.bashrc
 
 # change source list for conda
-echo << EOF > ~/.bashrc
+cat << EOF > ~/.condarc
 channels:
   - defaults
 show_channel_urls: true
@@ -46,17 +62,21 @@ custom_channels:
 EOF
 
 # clean index caches for conda
-conda clean -i && { echo "clean index caches error"; exit 1 }
+conda clean -i || { echo "clean index caches error"; return 1; }
 
 # download yml file
-proxy_https="https://$PROXY_ADDR:$PROXY_PORT" wget "https://data.qiime2.org/distro/core/$QIIME2.yml"
-if [ ! $? == 0 ]; then echo "please set global proxy ip and port"; exit 1;fi
+wget "https://data.qiime2.org/distro/core/$QIIME2.yml"
+if [ ! $? == 0 ]; then echo "please set global proxy ip and port"; return 1;fi
 
 # edit qiime2 labels
-sed -i "2cqiime2" $QIIME2.yml
+sed -i "2c\ \ -\ qiime2" $QIIME2.yml
 
 # create env
-conda env create -n qiime2-2021.11 --file $QIIME2.yml && {  echo "create qiime env failed"; exit 1 }
+conda env create -n qiime2-2021.11 --file $QIIME2.yml || {  echo "create qiime env failed"; return 1; }
+
+conda init bash
+
+source ~/.bashrc
 
 # active qiime2
 conda activate qiime2-2021.11
@@ -69,3 +89,7 @@ conda deactivate qiime2-2021.11
 
 # go back to raw path
 cd $RAWPATH
+
+}
+
+zimu
