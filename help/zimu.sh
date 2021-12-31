@@ -1,7 +1,8 @@
+#!/bin/bash
 # LGPL
-# copy-left
-# I am an open source suppourter
-# but this file is just help zimu, not need to obey LGPL in this repo
+# this file is just help zimu, not need to obey LGPL in this repo
+
+# usage: bash -i zimu.sh
 
 function zimu()
 {
@@ -11,16 +12,16 @@ function zimu()
 	TEMP_PATH="$HOME/.anaconda_tmp"
 	MINICONDA="$HOME/miniconda3"
 	QIIME2="qiime2-2021.11-py38-linux-conda"
-	
+
 	# get ip address from https://ipaddress.com which domain name we need is raw.githubusercontent.com
 	GITHUB_ADDR="185.199.108.133"
 	COMMADN="$GITHUB_ADDR raw.githubusercontent.com"
-	
+
 	# save orignal path
 	RAWPATH=`pwd`
 
 	# edit hosts for github
-	grep "raw.githubusercontent.com" /etc/hosts
+	grep "raw.githubusercontent.com" /etc/hosts > /dev/null
 	if [ $? == 1 ]; then sudo bash -c "echo $GITHUB_ADDR raw.githubusercontent.com >> /etc/hosts"; fi
 
 	# check if first install, if not remove them
@@ -36,12 +37,15 @@ function zimu()
 	# download miniconda script
 	wget -c "$SOURCE_URL/anaconda/miniconda/$CONDA_PKG.sh"  || { echo "download error!"; return 1; }
 
-	# install Miniconda, this way is same as `bash Miniconda3-py38_4.10.3-Linux-x86_64.sh` but not every linux distributes has bash expecially for very old distributes
-	chmod +x $CONDA_PKG.sh
-	./$CONDA_PKG.sh || { echo "execute scripts failed!"; return 1; }
+	# download yml file
+	wget "https://data.qiime2.org/distro/core/$QIIME2.yml"
+	if [ ! $? == 0 ]; then echo "please set global proxy ip and port"; return 1;fi
 
+	# install Miniconda
+	bash -i $CONDA_PKG.sh || { echo "execute scripts failed!"; return 1; }
+	
 	# update .bashrc in current sessions, source command is same as . command
-	source ~/.bashrc
+	. ~/.bashrc
 
 	# change source list for conda
 	cat << EOF > ~/.condarc
@@ -62,13 +66,9 @@ custom_channels:
   simpleitk: $SOURCE_URL/anaconda/cloud
   qiime2: $SOURCE_URL/anaconda/cloud
 EOF
-
+	
 	# clean index caches for conda
 	conda clean -i || { echo "clean index caches error"; return 1; }
-
-	# download yml file
-	wget "https://data.qiime2.org/distro/core/$QIIME2.yml"
-	if [ ! $? == 0 ]; then echo "please set global proxy ip and port"; return 1;fi
 
 	# edit qiime2 labels
 	sed -i "2c\ \ -\ qiime2" $QIIME2.yml
