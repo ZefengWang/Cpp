@@ -2,9 +2,12 @@
 # LGPL
 # this file is just help zimu, not need to obey LGPL in this repo
 
-# usage: bash -i zimu.sh
+# usage: source zimu.sh
+#	 installqiime2
+# usage: source zimu.sh
+#	 removeqiime2
 
-function zimu()
+function installqiime2()
 {
 	# set some local variables
 	CONDA_PKG='Miniconda3-py38_4.10.3-Linux-x86_64'
@@ -42,7 +45,8 @@ function zimu()
 	if [ ! $? == 0 ]; then echo "please set global proxy ip and port"; return 1;fi
 
 	# install Miniconda
-	bash -i $CONDA_PKG.sh || { echo "execute scripts failed!"; return 1; }
+	chmod +x $CONDA_PKG.sh
+	./$CONDA_PKG.sh || { echo "execute scripts failed!"; return 1; }
 	
 	# update .bashrc in current sessions, source command is same as . command
 	. ~/.bashrc
@@ -81,4 +85,9 @@ EOF
 	cd $RAWPATH
 }
 
-zimu
+function removeqiime2()
+{
+	rm ~/miniconda3 ~/.anaconda_tmp ~/.condarc .conda/ -rf
+	source ~/.bashrc
+}
+
