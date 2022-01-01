@@ -52,9 +52,9 @@ function installqiime2()
 
 	# don't pollute the bash environment
 	conda config --set auto_activate_base false
-
-	# update .bashrc in current sessions, source command is same as . command
-	. ~/.bashrc
+	
+	# exit base
+	conda deactivate
 
 	# change source list for conda
 	cat << EOF > ~/.condarc
