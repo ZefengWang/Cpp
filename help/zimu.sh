@@ -18,7 +18,6 @@ function installqiime2()
 
 	# get ip address from https://ipaddress.com which domain name we need is raw.githubusercontent.com
 	GITHUB_ADDR="185.199.108.133"
-	COMMADN="$GITHUB_ADDR raw.githubusercontent.com"
 
 	# save orignal path
 	RAWPATH=`pwd`
@@ -35,18 +34,18 @@ function installqiime2()
 	mkdir -p $TEMP_PATH
 
 	# change directory
-	cd $TEMP_PATH
+	cd $TEMP_PATH || { echo "change dir failed"; cd $RAWPATH; return 1; }
 
 	# download miniconda script
-	wget -c "$SOURCE_URL/anaconda/miniconda/$CONDA_PKG.sh"  || { echo "download error!"; return 1; }
+	wget -c "$SOURCE_URL/anaconda/miniconda/$CONDA_PKG.sh"  || { echo "download error!"; cd $RAWPATH; return 1; }
 
 	# download yml file
 	wget "https://data.qiime2.org/distro/core/$QIIME2.yml"
-	if [ ! $? == 0 ]; then echo "please set global proxy ip and port"; return 1;fi
+	if [ ! $? == 0 ]; then echo "please set global proxy ip and port"; cd $RAWPATH; return 1;fi
 
 	# install Miniconda
 	chmod +x $CONDA_PKG.sh
-	./$CONDA_PKG.sh || { echo "execute scripts failed!"; return 1; }
+	./$CONDA_PKG.sh || { echo "execute scripts failed!"; cd $RAWPATH; return 1; }
 	
 	# update .bashrc in current sessions, source command is same as . command
 	. ~/.bashrc
@@ -72,13 +71,13 @@ custom_channels:
 EOF
 	
 	# clean index caches for conda
-	conda clean -i || { echo "clean index caches error"; return 1; }
+	conda clean -i || { echo "clean index caches error"; cd $RAWPATH; return 1; }
 
 	# edit qiime2 labels
-	sed -i "2c\ \ -\ qiime2" $QIIME2.yml
+	sed -i "2c\ \ -\ qiime2" $QIIME2.yml || { echo "execute scripts failed!"; cd $RAWPATH; return 1; }
 
 	# create env
-	conda env create -n qiime2-2021.11 --file $QIIME2.yml || {  echo "create qiime env failed"; return 1; }
+	conda env create -n qiime2-2021.11 --file $QIIME2.yml || {  echo "create qiime env failed"; cd $RAWPATH; return 1; }
 
 	echo "done"
 	# go back to raw path
