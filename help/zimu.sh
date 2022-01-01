@@ -50,6 +50,12 @@ function installqiime2()
 	# update .bashrc in current sessions, source command is same as . command
 	. ~/.bashrc
 
+	# don't pollute the bash environment
+	conda config --set auto_activate_base false
+
+	# update .bashrc in current sessions, source command is same as . command
+	. ~/.bashrc
+
 	# change source list for conda
 	cat << EOF > ~/.condarc
 channels:
@@ -78,6 +84,15 @@ EOF
 
 	# create env
 	conda env create -n qiime2-2021.11 --file $QIIME2.yml || {  echo "create qiime env failed"; cd $RAWPATH; return 1; }
+
+	# active qiime2 
+	conda activate qiime2-2021.11
+
+	# test qiime2
+	qiime --help
+	
+	# deactive qime2
+	conda deactivate
 
 	echo "done"
 	# go back to raw path
