@@ -86,7 +86,16 @@ EOF
 
 function removeqiime2()
 {
-	rm ~/miniconda3 ~/.anaconda_tmp ~/.condarc .conda/ -rf
+	local conda=$HOME/miniconda3
+	local temp=$HOME/.anaconda_tmp
+	local condarc=$HOME/.condarc
+	local cache=$HOME/.conda
+
+	if [ ! -d $conda ]; then conda=""; fi
+	if [ ! -d $temp ]; then temp=""; fi
+	if [ ! -f $condarc ]; then condarc=""; fi
+	if [ ! -d $cache ]; then cache=""; fi
+	rm -rf $conda $temp $condarc $cache
 	source ~/.bashrc
 }
 
